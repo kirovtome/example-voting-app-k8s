@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  namespace: voteapp-dev
+  labels:
+    app: example-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-voting-app
+      name: worker-pod
+  template:
+    metadata:
+      name: worker-pod
+      labels:
+        app: example-voting-app
+        name: worker-pod
+    spec:
+      containers:
+      - image: tomekirov/examplevotingapp_worker:1.1
+        name: worker
+        imagePullPolicy: Always

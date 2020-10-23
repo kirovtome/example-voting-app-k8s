@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result
+  namespace: voteapp-dev
+  labels:
+    app: example-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-voting-app
+      name: result-pod
+  template:
+    metadata:
+      name: result-pod
+      labels:
+        app: example-voting-app
+        name: result-pod
+    spec:
+      containers:
+      - image: tomekirov/examplevotingapp_result:1.1
+        name: result
+        imagePullPolicy: Always
+        readinessProbe:
+            httpGet:
+              port: 80
+              path: /
+        livenessProbe:
+            httpGet:
+              port: 80
+              path: /
