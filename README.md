@@ -1,4 +1,4 @@
-# ansible-redis-rabbitmq-mysql
+# example-voting-app-k8s
 
 This Terraform module deploys an AKS cluster and adds support for monitoring with Log Analytics. 
 
